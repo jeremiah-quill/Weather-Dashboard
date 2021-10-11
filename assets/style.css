@@ -1,0 +1,83 @@
+* {
+	box-sizing: border-box;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background: lightblue;
+}
+
+header {
+	background: pink;
+	text-align: center;
+	padding: 20px;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+#search-and-results {
+	border: 1px solid black;
+	margin: 10px 10px 0px 10px;
+}
+
+/* form,
+section {
+	flex-basis: 100%;
+} */
+
+#conditions {
+	margin: 10px;
+}
+
+#current-conditions-container {
+	border: 1px solid black;
+	background: lightgreen;
+	padding: 10px;
+	/* margin-top: 10px; */
+}
+
+#forecast-conditions-container {
+	/* border: 1px solid black;
+	background: coral; */
+	display: flex;
+	flex-direction: column;
+	/* margin: 10px; */
+}
+
+.forecast-day {
+	border: 1px solid black;
+	/* margin: 10px; */
+	padding: 10px;
+	background: coral;
+}
+
+@media screen and (min-width: 576px) {
+	main {
+		flex-direction: row;
+	}
+	#search-and-results {
+		flex-basis: 30%;
+		flex-grow: 1;
+		margin-right: 0;
+	}
+	#conditions {
+		flex-basis: 70%;
+		/* margin: 10px; */
+	}
+	#forecast-conditions-container {
+		flex-direction: row;
+		flex-wrap: wrap;
+		font-size: .7rem;
+		justify-content: center;
+	}
+	.forecast-day {
+		margin: 10px;
+	}
+}
