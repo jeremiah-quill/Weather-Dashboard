@@ -27,11 +27,6 @@ main {
 	margin: 10px 10px 0px 10px;
 }
 
-/* form,
-section {
-	flex-basis: 100%;
-} */
-
 #conditions {
 	margin: 10px;
 }
@@ -56,6 +51,27 @@ section {
 	/* margin: 10px; */
 	padding: 10px;
 	background: coral;
+}
+
+form {
+	display: flex;
+}
+
+#search-results {
+	margin: 0;
+	padding: 0;
+}
+
+.search-result {
+	background: white;
+	font-size: .6rem;
+	list-style-type: none;
+	cursor: pointer;
+	padding: 5px;
+}
+
+.search-result:hover {
+	background: lightgray;
 }
 
 @media screen and (min-width: 576px) {

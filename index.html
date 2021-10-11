@@ -11,62 +11,29 @@
     <header>Weather Dashboard</header>
     <main>
         <div id="search-and-results">
-            <form>
-                <input type="text" placeholder="City...">
-                <button type="submit">Search</button>
+            <form autocomplete="off">
+                <div id="search-bar">
+                    <input id="search-input" type="text" placeholder="City...">
+                    <ul id="search-results"></ul>
+                </div>
+                <!-- <button id="search-submit" type="submit">Search</button> -->
             </form>
-            <ul>
+            <!-- <ul>
                 <li>city 1</li>
                 <li>city 2</li>
                 <li>city 3</li>
                 <li>city 4</li>
-            </ul>
+            </ul> -->
         </div>
         <section id="conditions">
             <section id="current-conditions-container">
-                <h2>City Name</h2>
+                <h2 id="city-name"></h2>
                 <p>Temp: <span id="current-temp"></span></p>
                 <p>Wind: <span id="current-wind"></span></p>
                 <p>Humidity: <span id="current-humidity"></span></p>
                 <p>UV Index: <span id="current-uvi"></span></p>
             </section>
-            <section id="forecast-conditions-container">
-                <!-- <div class="forecast-day">
-                    <h3>10/12/21</h3>
-                    <div>img goes here</div>
-                    <p>Temp:<span id="forecast-temp-container"></span></p>
-                    <p>Wind:<span id="forecast-wind-container"></span></p>
-                    <p>Humidity:<span id="forecast-humidity-container"></span></p>
-                </div>
-                <div class="forecast-day">
-                    <h3>10/12/21</h3>
-                    <div>img goes here</div>
-                    <p>Temp:<span id="forecast-temp-container"></span></p>
-                    <p>Wind:<span id="forecast-wind-container"></span></p>
-                    <p>Humidity:<span id="forecast-humidity-container"></span></p>
-                </div>
-                <div class="forecast-day">
-                    <h3>10/12/21</h3>
-                    <div>img goes here</div>
-                    <p>Temp:<span id="forecast-temp-container"></span></p>
-                    <p>Wind:<span id="forecast-wind-container"></span></p>
-                    <p>Humidity:<span id="forecast-humidity-container"></span></p>
-                </div>
-                <div class="forecast-day">
-                    <h3>10/12/21</h3>
-                    <div>img goes here</div>
-                    <p>Temp:<span id="forecast-temp-container"></span></p>
-                    <p>Wind:<span id="forecast-wind-container"></span></p>
-                    <p>Humidity:<span id="forecast-humidity-container"></span></p>
-                </div>
-                <div class="forecast-day">
-                    <h3>10/12/21</h3>
-                    <div>img goes here</div>
-                    <p>Temp:<span id="forecast-temp-container"></span></p>
-                    <p>Wind:<span id="forecast-wind-container"></span></p>
-                    <p>Humidity:<span id="forecast-humidity-container"></span></p>
-                </div> -->
-            </section>
+            <section id="forecast-conditions-container"></section>
         </section>
     </main>
     <script src="assets/script.js"></script>
