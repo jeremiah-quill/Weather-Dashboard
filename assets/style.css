@@ -7,19 +7,21 @@ body {
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	background: lightblue;
+	/* background: lightblue; */
 }
 
 header {
-	background: pink;
+	/* background: pink; */
 	text-align: center;
-	padding: 20px;
+	padding: 5px;
+	background: rgb(34, 47, 63);
+	color: white;
 }
 
 main {
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	height: 80vh;
 }
 
 #search-and-results {
@@ -33,7 +35,7 @@ main {
 
 #current-conditions-container {
 	border: 1px solid black;
-	background: lightgreen;
+	/* background: lightgreen; */
 	padding: 10px;
 	/* margin-top: 10px; */
 }
@@ -50,7 +52,8 @@ main {
 	border: 1px solid black;
 	/* margin: 10px; */
 	padding: 10px;
-	background: coral;
+	background: rgb(34, 47, 63);
+	color: white;
 }
 
 form {
@@ -74,6 +77,10 @@ form {
 	background: lightgray;
 }
 
+#conditions {
+	visibility: hidden;
+}
+
 @media screen and (min-width: 576px) {
 	main {
 		flex-direction: row;
@@ -94,6 +101,7 @@ form {
 		justify-content: center;
 	}
 	.forecast-day {
-		margin: 10px;
+		/* margin: 10px; */
+		flex-basis: 20%;
 	}
 }

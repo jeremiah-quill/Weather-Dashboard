@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-    <header>Weather Dashboard</header>
+    <header><h1>Weather Dashboard</h1></header>
     <main>
         <div id="search-and-results">
             <form autocomplete="off">
@@ -28,9 +28,11 @@
         <section id="conditions">
             <section id="current-conditions-container">
                 <h2 id="city-name"></h2>
-                <p>Temp: <span id="current-temp"></span></p>
-                <p>Wind: <span id="current-wind"></span></p>
-                <p>Humidity: <span id="current-humidity"></span></p>
+                <h3 id="current-date"></h3>
+                <div id="current-icon"></div>
+                <p>Temp: <span id="current-temp"></span> deg F</p>
+                <p>Wind: <span id="current-wind"></span> MPH</p>
+                <p>Humidity: <span id="current-humidity"></span> %</p>
                 <p>UV Index: <span id="current-uvi"></span></p>
             </section>
             <section id="forecast-conditions-container"></section>
