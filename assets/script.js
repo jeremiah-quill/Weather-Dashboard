@@ -11,9 +11,9 @@ const cityName = document.querySelector('#city-name')
 const currentDate = document.querySelector('#current-date')
 const conditions = document.querySelector('#conditions')
 const currentIcon = document.querySelector('#current-icon')
+const searchHistory = document.querySelector('.search-history')
 
 const apiKey = '6a905d171191dfe149465c7b27c14813'
-
 
 
 // Find cities that match searched string and show them in a dropdown list
@@ -37,13 +37,27 @@ const getLatLon = (string) => {
                 
                     let lat = city.center[1];
                     let lon = city.center[0];
-                    getWeather(lat, lon)
 
-                    conditions.style.visibility = 'visible';
-                    cityName.textContent = city.place_name
-                    let date = new Date();
-                    let formattedDate = date.toLocaleDateString("en-US")  
-                    currentDate.textContent = formattedDate
+                    getWeather(lat, lon, city.place_name)
+
+                    let searchObject = {
+                        lat: city.center[1],
+                        lon: city.center[0],
+                        name: city.place_name
+                    }
+                    if(localStorage.getItem("history") !== null) {
+                        let history = JSON.parse(localStorage.getItem("history"))
+                        history.push(searchObject)
+                        localStorage.setItem("history", JSON.stringify(history))
+                    }   else {
+                        let history = [searchObject]
+                        localStorage.setItem("history", JSON.stringify(history))
+                    }
+                    
+                    renderHistory()
+
+                    
+
 
                     searchResults.innerHTML = ''
             })
@@ -52,7 +66,7 @@ const getLatLon = (string) => {
 }
 
 // Gets current weather based on a latitude and longitude
-const getWeather = (lat, lon) => {
+const getWeather = (lat, lon, name) => {
     let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`
 
     fetch(url, {"Set-Cookie": "none; secure"})
@@ -62,9 +76,15 @@ const getWeather = (lat, lon) => {
     .then(data => {
         // Render current weather
         forecastConditions.innerHTML = ''
+        cityName.textContent = name
+        conditions.style.visibility = 'visible';
+        let date = new Date();
+        let formattedDate = date.toLocaleDateString("en-US")  
+        currentDate.textContent = formattedDate
 
         let currentIconImg = document.createElement('img');
         currentIconImg.src = `http://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`
+        currentIcon.innerHTML = ""
         currentIcon.appendChild(currentIconImg)
 
         currentTemp.textContent = data.current.temp;
@@ -95,9 +115,29 @@ const getWeather = (lat, lon) => {
     })
 }
 
+const renderHistory = () => {
+    if(localStorage.getItem("history") !== null) {
+        let history = JSON.parse(localStorage.getItem("history"))
+        searchHistory.innerHTML = ''
+        history.forEach(item => {
+            let el = document.createElement('li');
+
+            el.addEventListener('click', () => {
+                console.log(item.lat)
+                getWeather(item.lat, item.lon, item.name)
+            })
+
+            el.textContent = item.name;
+            searchHistory.appendChild(el)
+        })
+    }
+}
+
 searchInput.addEventListener('keyup', () => {
     searchResults.innerHTML = ''
     if(searchInput.value.length > 2) {
         getLatLon(searchInput.value)
     }
 })
+
+renderHistory()

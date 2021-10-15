@@ -81,6 +81,21 @@ form {
 	visibility: hidden;
 }
 
+.search-history {
+	margin: 20px 0 0 0;
+	padding: 0;
+}
+
+.search-history li {
+	list-style-type: none;
+	font-size: .75rem;
+	cursor: pointer;
+}
+
+.search-history li:hover {
+	background-color: gray;
+}
+
 @media screen and (min-width: 576px) {
 	main {
 		flex-direction: row;
