@@ -63,18 +63,30 @@ form {
 #search-results {
 	margin: 0;
 	padding: 0;
+	position: absolute;
+}
+
+#search-bar {
+	display: relative;
+	width: 100%;
+}
+
+#search-input {
+	width: 100%;
 }
 
 .search-result {
-	background: white;
 	font-size: .6rem;
 	list-style-type: none;
 	cursor: pointer;
-	padding: 5px;
+	padding: 10px;
+	background: rgb(34, 47, 63);
+	color: white;
 }
 
 .search-result:hover {
-	background: lightgray;
+	background-color: darkgray;
+	color: black;
 }
 
 #conditions {
@@ -82,18 +94,23 @@ form {
 }
 
 .search-history {
-	margin: 20px 0 0 0;
+	margin: 10px 0 0 0;
 	padding: 0;
 }
 
 .search-history li {
 	list-style-type: none;
-	font-size: .75rem;
+	font-size: .85rem;
 	cursor: pointer;
+	padding: 10px;
 }
 
 .search-history li:hover {
 	background-color: gray;
+}
+
+#search-and-results h3 {
+	margin-bottom: 0;
 }
 
 @media screen and (min-width: 576px) {
