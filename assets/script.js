@@ -98,7 +98,21 @@ const getWeather = (lat, lon, name) => {
         currentTemp.textContent = data.current.temp;
         currentWind.textContent = data.current.wind_speed;
         currentHumidity.textContent = data.current.humidity
-        currentUVI.textContent = data.current.uvi
+
+        let uvi = data.current.uvi
+        currentUVI.textContent = uvi
+
+        if(uvi <= 2) {
+            currentUVI.style.backgroundColor = 'green'
+        } else if(uvi > 2 && uvi <= 5) {
+            currentUVI.style.backgroundColor = 'yellow'
+        } else if(uvi > 5 && uvi <= 7) {
+            currentUVI.style.backgroundColor = 'orange'
+        } else if(uvi > 7 && uvi <= 10) {
+            currentUVI.style.backgroundColor = 'red'
+        } else {
+            currentUVI.style.backgroundColor = 'purple'
+        }
 
         // Render 5 day forecast
         const daily = data.daily;
