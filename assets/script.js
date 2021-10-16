@@ -29,7 +29,14 @@ const getLatLon = (string) => {
         cities.forEach(city => {
             let searchResult = document.createElement('li');
             searchResult.className = 'search-result'
-            searchResult.textContent = city.place_name
+
+            // Take out ", United States" from the returned city name
+            let fullName = city.place_name
+            let commaIndex = fullName.split('').reverse().indexOf(',')
+            let shortName = fullName.slice(0, (fullName.length - commaIndex - 1))
+
+
+            searchResult.textContent = shortName
             searchResults.appendChild(searchResult)
 
             // Click a search result to fire getWeather api call with a specified latitude and longitude
@@ -38,27 +45,28 @@ const getLatLon = (string) => {
                     let lat = city.center[1];
                     let lon = city.center[0];
 
-                    getWeather(lat, lon, city.place_name)
+                    getWeather(lat, lon, shortName)
 
                     let searchObject = {
                         lat: city.center[1],
                         lon: city.center[0],
-                        name: city.place_name
+                        name: shortName
                     }
+                    
                     if(localStorage.getItem("history") !== null) {
                         let history = JSON.parse(localStorage.getItem("history"))
-                        history.push(searchObject)
-                        localStorage.setItem("history", JSON.stringify(history))
+
+                        // Check to see if history includes the city in searchObject.  If it's not there, add it to history.  If it is there, do nothing.
+                        if(history.find(element => element.name === searchObject.name) === undefined) {
+                            history.unshift(searchObject)
+                            localStorage.setItem("history", JSON.stringify(history))
+                        }
+
                     }   else {
                         let history = [searchObject]
                         localStorage.setItem("history", JSON.stringify(history))
                     }
-                    
                     renderHistory()
-
-                    
-
-
                     searchResults.innerHTML = ''
             })
         })
@@ -118,18 +126,19 @@ const getWeather = (lat, lon, name) => {
 const renderHistory = () => {
     if(localStorage.getItem("history") !== null) {
         let history = JSON.parse(localStorage.getItem("history"))
-        searchHistory.innerHTML = ''
-        history.forEach(item => {
+        searchHistory.innerHTML = '';
+        
+        for(let i = 0; i<(history.length > 10 ? 10 : history.length); i++) {
+
             let el = document.createElement('li');
 
             el.addEventListener('click', () => {
-                console.log(item.lat)
-                getWeather(item.lat, item.lon, item.name)
+                getWeather(history[i].lat, history[i].lon, history[i].name)
             })
 
-            el.textContent = item.name;
+            el.textContent = history[i].name;
             searchHistory.appendChild(el)
-        })
+        }
     }
 }
 
