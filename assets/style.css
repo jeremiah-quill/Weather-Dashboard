@@ -113,6 +113,12 @@ form {
 	margin-bottom: 0;
 }
 
+#current-uvi {
+	padding: 3px;
+	border: 2px solid black;
+	border-radius: 3px;
+}
+
 @media screen and (min-width: 576px) {
 	main {
 		flex-direction: row;
