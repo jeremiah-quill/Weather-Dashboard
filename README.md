@@ -13,3 +13,4 @@ Features of the app include:
 
 The following is a screenshot of the finished product:
 
+![Weather-Dashboard_](https://user-images.githubusercontent.com/53875206/137607396-5e6308a8-3f2e-4b62-863a-eb0d08a40f81.png)
